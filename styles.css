@@ -1,0 +1,133 @@
+body {
+  background: #DBDEDB;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1em;
+  margin-top: 25px;
+  margin-bottom: 100px;
+  color: #312E7B;
+}
+
+label {
+  font-size: 20px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+
+h1 span {
+  color: red;
+}
+
+input {
+  margin: 10px;
+}
+
+button {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+ul {
+  display:inline-block;
+  text-align: left;
+}
+
+table, tr, td, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+#textInput {
+  width: 800px;
+  height: auto;
+  max-width: 40%;
+}
+
+#resultsHead {
+  border: 2px #312E7B solid;
+  width: max-content;
+  padding: 10px
+}
+
+#errorMessage {
+  color: red;
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+#sequence {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+#dnaSequence {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+#dnaSeqWarn {
+  color: red;
+  font-weight: 900;
+}
+
+#aaTable {
+  float: left;
+  margin-right: 50px;
+}
+
+#proteinSeqLength span{
+  color:red;
+  font-weight: 900;
+}
+
+.residueSummary {
+  min-width: 465px;
+  float: left;
+}
+
+.ecwrapper {
+  float: left;
+  margin-top: 10px;
+}
+
+.welcomebox {
+  width: 45%;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 20px;
+}
+
+.sidebox {
+  font-size: 20px;
+  border: 1px black solid;
+  background-color: beige;
+  border-radius: 5%;
+  width: 0 auto;
+  float:right;
+  text-align: center;
+  padding: 1%;
+  margin-right: 5%;
+  max-width: 40%;
+  box-shadow: 3px 3px grey;
+}
+
+.sidebox p {
+  margin-top: auto;
+  margin-bottom: 5px;
+}
+
+.references {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.references p {
+  margin: 0;
+  padding: 0;
+  width: auto;
+}

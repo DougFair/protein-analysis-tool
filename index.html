@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Protein Analysis Tool</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+  <div class = "container">
+    <div class = "frontPage">
+      <h1><span>P</span>rotein <span>A</span>nalysis <span>T</span>ool<br><br></h1>
+      <div class = "introSection">
+        <div class = "sidebox">
+          <p>The program calculates:</p>
+            <ul>
+              <li>Molecular weight</li>
+              <li>Amino acid composition</li>
+              <li>pI</li>
+              <li>Extinction co-efficient</li>
+              <li>Protein concentration from inputed A280</li>
+            </ul>
+          <p> You can also enter a DNA sequence for translation and analysis!</p>
+        </div>
+        <p class = "welcomebox">Welcome to the Protein Props web tool for analysing protein sequences. Simply select sequence type, enter your sequence and click "Submit".</p>
+      </div>
+
+    <div class="errMessage">
+      <div id="errorMessage"></div>
+    </div>
+
+    <div class = "inputForm">
+      <form class="" action="" method="post">
+        <label for="Protein">Protein: </label>
+        <input id = "proteinButton" type="radio" name="sequence" value="Protein">
+        <label for= "DNA">DNA: </label>
+        <input id = "dnaButton" type="radio" name="sequence" value="DNA">
+        <br>
+        <textarea id = "textInput" name = 'inputSeq' rows = '10' cols = '80' placeholder = 'Enter Sequence here (case insensitive)'></textarea>
+        <br>
+        <h5>Use single letter code for proteins</h5>
+        <button id = "subSeq" type="button" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class= "notNorm">
+    <div id= "notNormal"><span style="color:red"></span></div>
+  </div>
+
+  <div id="resultsHead"></div>
+  <div id="dnaSeqSubHead"><span style="font-weight:900;color:red"></div>
+  <div id="dnaSequence"></div>
+  <div id="dnaSeqComp"></div>
+  <div id="dnaSeqWarn"></div>
+  <div id="proteinSeqSubHead"><span style="font-weight:900;color:red"></div>
+  <div id="proteinSeqLength"></div>
+  <div id="sequence"></div>
+  <div id= "mw"></div>
+  <div id= "composition"></div>
+
+  <div id= "aaTable">
+    <table>
+      <col width="auto" padding="50px">
+      <col width="60px">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="residueSummary">
+      <div id="chargeHydro"></div>
+      <div id= "pI"><br></div>
+  </div>
+
+  <div class="ecwrapper">
+    <div id= "ec"><br></div>
+      <form id="ecInput" onsubmit="return false">
+        <div class="form-group">
+          <label style="font-size: 1em" style="font-family: 'IBM Plex Sans Condensed', sans-serif" for="AbsorbInput"><br>Input your A280 and click "Enter" to calculate concentration <br>or click "New Sequence" to enter a new sequence.<br></label>
+          <input type="text" class="form-control" id="AbsorbInput" placeholder="Input A280" style="width: 150px">
+        </div>
+        <div id="odResult"></div>
+        <div>
+          <button style="margin-right: 20px" type="button" id="A280button" class="btn btn-primary">Enter</button>
+          <button type="button" id="reload" class="btn btn-danger">New Sequence</button>
+          <h6><br>You can successively enter multiple OD values if required.</h4>
+        </div>
+      </form>
+  </div>
+
+  <div class="references">
+    <p><strong>References</strong></p>
+    <p><strong>Extinction coefficient</strong></p>
+    <p>Gill, S.C. and von Hippel, P.H. (1989) Calculation of protein extinction coefficients from amino acid sequence data. Anal. Biochem. 182:319-326(1989). PubMed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/2610349?dopt=Abstract" target="_blank" rel="noopener noreferrer">2610349</a></p>
+    <p><strong>Aliphatic Index</strong></p>
+    <p>Ikai, A.J. (1980) Thermostability and aliphatic index of globular proteins. J. Biochem. 88, 1895-1898. Pubmed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/7462208?dopt=Abstract"  >7462208</a></p>
+    <p><strong>GRAVY</strong></p>
+    <p>Kyte, J. and Doolittle, R.F. (1982) A simple method for displaying the hydropathic character of a protein. J. Mol. Biol. 157, 105-132. PubMed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/7108955?dopt=Abstract" target="_blank" rel="noopener noreferrer">7108955</a></p>
+    <p><strong>pI</strong></p>
+    <p>Bjellqvist, B., et al. The focusing positions of polypeptides in immobilized pH gradients can be predicted from their amino acid sequences. Electrophoresis 1993, 14, 1023-1031. PubMed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/8125050" target="_blank" rel="noopener noreferrer">8125050</a></p>
+    <p>Bjellqvist, B., et al. Reference points for comparisons of two-dimensional maps of proteins from different human cell types defined in a pH scale where isoelectric points correlate with polypeptide compositions. Electrophoresis 1994, 15, 529-539. PubMed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/8055880" target="_blank" rel="noopener noreferrer">8055880</a></p>
+    <p>Wikipedia amino acid pKa values: <a href="https://en.wikipedia.org/wiki/Proteinogenic_amino_acid" target="_blank" rel="noopener noreferrer">Wikipedia</a></p>
+  </div>
+
+  <script type="text/javascript" src="app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </div>
+  </body>
+</html>
